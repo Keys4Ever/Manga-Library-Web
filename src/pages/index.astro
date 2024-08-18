@@ -2,20 +2,20 @@
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 ---
-
 <Layout title="INDEX">
-	<main>
-		<h1 class="text-4xl">Manga Extension</h1>
-		<div class="flex items-center w-full text-center">
-			<Button href="https://chromewebstore.google.com/">
-				<img slot="img" src="download.svg">
-				<span slot="name" class="ml-1">Download</span>
-			</Button>
-			<Button href='https://github.com/kosmosama/mangaextension'>
-				<img slot="img" src="github.svg">
-				<span slot="name" class="ml-1">Source code</span>
-			</Button>
+	<main class="flex items-center justify-center h-screen">
+		<div class="text-center">
+			<h1 class="text-6xl mb-6">Manga Extension</h1>
+			<div class="flex justify-center items-center space-x-4">
+				<Button href="https://chromewebstore.google.com/">
+					<img slot="img" src="download.svg">
+					<span slot="name" class="ml-1">Download</span>
+				</Button>
+				<Button href="https://github.com/kosmosama/mangaextension">
+					<img slot="img" src="github.svg">
+					<span slot="name" class="ml-1">Source code</span>
+				</Button>
+			</div>
 		</div>
 	</main>
 </Layout>
-
