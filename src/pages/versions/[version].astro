@@ -1,0 +1,19 @@
+---
+const version = Astro.params.version;
+---
+
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Versión {version}</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <main class="container mx-auto p-6">
+    <h1 class="text-3xl font-bold mb-6">Detalles de la Versión {version}</h1>
+    <p>Aquí puedes agregar detalles específicos de la versión {version}.</p>
+    <a href="/versions" class="text-blue-600 hover:underline">Volver a la timeline de versiones</a>
+  </main>
+</body>
+</html>
