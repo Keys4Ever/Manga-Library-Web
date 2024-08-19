@@ -1,5 +1,11 @@
 ---
 const version = Astro.params.version;
+import { versions } from '../versions.astro';
+
+const currentVersion = versions.find(v => v.version === version);
+const versionDetails = currentVersion ? currentVersion.details : 'Detalles no disponibles para esta versión.';
+const versionDescription = currentVersion ? currentVersion.description : 'Descripción no disponible.';
+const versionDate = currentVersion ? currentVersion.date : 'Fecha no disponible.';
 ---
 
 <html lang="es">
@@ -7,13 +13,14 @@ const version = Astro.params.version;
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Versión {version}</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 text-gray-800">
   <main class="container mx-auto p-6">
-    <h1 class="text-3xl font-bold mb-6">Detalles de la Versión {version}</h1>
-    <p>Aquí puedes agregar detalles específicos de la versión {version}.</p>
-    <a href="/versions" class="text-blue-600 hover:underline">Volver a la timeline de versiones</a>
+    <h1 class="text-3xl font-bold mb-6">Detalles de la versión: {version}</h1>
+    <p class="text-sm text-gray-500 mb-2"><strong>Fecha de lanzamiento:</strong> {versionDate}</p>
+    <p class="mb-4"><strong>Descripción:</strong> {versionDescription}</p>
+    <p>{versionDetails}</p>
+    <a href="/versions" class="text-blue-600 hover:underline mt-6 block">Volver a la timeline de versiones</a>
   </main>
 </body>
 </html>
