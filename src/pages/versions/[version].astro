@@ -3,12 +3,22 @@ const version = Astro.params.version;
 import { versions } from '../versions.astro';
 
 const currentVersion = versions.find(v => v.version === version);
+
+if (!currentVersion) {
+  return Astro.redirect('/404.astro');
+}
+
+
 const versionDetails = currentVersion ? currentVersion.details : 'Detalles no disponibles para esta versión.';
 const versionDescription = currentVersion ? currentVersion.description : 'Descripción no disponible.';
 const versionDate = currentVersion ? currentVersion.date : 'Fecha no disponible.';
+console.log(version)
+
+
+
 ---
 
-<html lang="es">
+<html lang="es"> 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

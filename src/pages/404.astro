@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+
+---
+<Layout title="Not found">
+    <div class="text-center mx-auto my-auto py-20">
+      <h1 class="text-4xl font-bold mb-4">404: We couldn't find the page you're looking for.</h1>
+      <img src="https://i.gifer.com/7lfh.gif" alt="Error GIF" class="mx-auto mb-8">
+      <div class="flex justify-center">
+        <Button href="/">
+          <img slot="img" src="arrow-left.svg" alt="Go back icon">
+          <span slot="name" class="ml-1">Go back</span>
+        </Button>
+      </div>
+    </div>
+</Layout>
+  
