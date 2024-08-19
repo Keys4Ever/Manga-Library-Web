@@ -1,36 +1,31 @@
 ---
 const version = Astro.params.version;
+import Button from '../../components/Button.astro';
+import Layout from '../../layouts/Layout.astro';
 import { versions } from '../versions.astro';
 
 const currentVersion = versions.find(v => v.version === version);
 
 if (!currentVersion) {
-  return Astro.redirect('/404.astro');
+  return Astro.redirect('/404');
 }
 
-
-const versionDetails = currentVersion ? currentVersion.details : 'Detalles no disponibles para esta versión.';
-const versionDescription = currentVersion ? currentVersion.description : 'Descripción no disponible.';
-const versionDate = currentVersion ? currentVersion.date : 'Fecha no disponible.';
-console.log(version)
-
-
-
+const versionDetails = currentVersion.details || 'Detalles no disponibles para esta versión.';
+const versionDescription = currentVersion.description || 'Descripción no disponible.';
+const versionDate = currentVersion.date || 'Fecha no disponible.';
 ---
 
-<html lang="es"> 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Versión {version}</title>
-</head>
-<body class="bg-gray-100 text-gray-800">
-  <main class="container mx-auto p-6">
+<Layout title={version}>
+  <main class="container mx-auto bg-opacity-30 p-6 bg-black text-white h-screen">
     <h1 class="text-3xl font-bold mb-6">Detalles de la versión: {version}</h1>
-    <p class="text-sm text-gray-500 mb-2"><strong>Fecha de lanzamiento:</strong> {versionDate}</p>
-    <p class="mb-4"><strong>Descripción:</strong> {versionDescription}</p>
+    <h2 class="text-sm mb-2"><strong>Fecha de lanzamiento:</strong> {versionDate}</h2>
+    <h2 class="mb-4"><strong>Descripción:</strong> {versionDescription}</h2>
     <p>{versionDetails}</p>
-    <a href="/versions" class="text-blue-600 hover:underline mt-6 block">Volver a la timeline de versiones</a>
+    <div class="mt-24">
+      <Button href="/versions">
+        <img slot="img" src="../arrow-left.svg" alt="Go back icon" />
+        <span slot="name" class="ml-1">Go back</span>
+      </Button>
+    </div>
   </main>
-</body>
-</html>
+</Layout>
