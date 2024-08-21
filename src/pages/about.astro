@@ -1,0 +1,63 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="About">
+    <section class="p-8 bg-gradient-to-br from-[#550055] via-[#660066] to-[#330033] text-white min-h-screen">
+        <div class="max-w-3xl mx-auto bg-white/10 backdrop-blur-md p-6 rounded-lg shadow-lg">
+            <div class="mb-8 text-center">
+                <h1 class="text-5xl font-extrabold mb-4 text-[#e5b8ff]">Index</h1>
+                <div class="space-x-4">
+                    <a href="#abtProject" class="px-4 py-2 bg-[#550055] text-white rounded-full shadow hover:bg-[#660066]">About the project</a>
+                    <a href="#abtUs" class="px-4 py-2 bg-[#550055] text-white rounded-full shadow hover:bg-[#660066]">About Us</a>
+                </div>
+            </div>
+
+            <h2 id="abtProject" class="text-4xl font-semibold mt-8 mb-4">About the project</h2>
+            <article class="space-y-6">
+                <h3 class="text-3xl font-semibold">¿Qué es esto?</h3>
+                <p>
+                    Esta es una nueva extensión de Google Chrome para marcar tus mangas, manwhas, manhuas y demás de una forma fácil, sencilla, y mostrada de una forma bonita.
+                </p>
+
+                <h3 class="text-3xl font-semibold">¿Por qué no usar los marcadores del navegador?</h3>
+                <p>
+                    Los marcadores de Chrome son desorganizados, feos y además hacen que te crezcan pelos en el ano si los usas. Si tienes una cantidad grande de mangas es difícil de mantenerlos.
+                </p>
+
+                <h3 class="text-3xl font-semibold">¿Para qué navegadores está disponible?</h3>
+                <p>
+                    Solo estamos seguros de que funciona en navegadores basados en Chromium, tales como:
+                </p>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>Chrome</li>
+                    <li>Brave</li>
+                    <li>Opera</li>
+                    <li>Opera GX</li>
+                    <li>Microsoft Edge</li>
+                </ul>
+                <p>
+                    Y demás. Si querés probarlo en otro navegador podes bajar el código fuente desde 
+                    <a href="https://github.com/kosmosama/MangaExtension" class="text-[#e5b8ff] hover:text-[#caa7e3]">acá</a> y probarlo donde quieras... Si no funciona podes hacer un fork y adaptarlo vos mismo.
+                </p>
+
+                <h3 class="text-3xl font-semibold">Why?</h3>
+                <p>Este proyecto fue creado porque estábamos aburridos</p>
+                <img src="thumbsUp.gif" alt="Bocchi the rock thumbs up" class="mt-4 rounded shadow-md">
+            </article>
+
+            <h2 id="abtUs" class="text-4xl font-semibold mt-8 mb-4">About Us</h2>
+            <article class="space-y-6">
+                <h3 class="text-3xl font-semibold">¿Quienes somos?</h3>
+                <p>
+                    Somos <a href="https://github.com/KosmoSama" class="text-[#e5b8ff] hover:text-[#caa7e3]">kosmosama (Luis, pon tu nombre completo acá)</a>, y 
+                    <a href="https://github.com/Keys4Ever" class="text-[#e5b8ff] hover:text-[#caa7e3]">Keys4Ever (Gonzalo Demian Cubilla)</a>.
+                </p>
+                <h3 class="text 3-xl font-semibold mt-8 mb-4">Hola?</h3>
+                    <p>
+                        adios.
+                    </p>
+            </article>
+        </div>
+    </section>
+</Layout>

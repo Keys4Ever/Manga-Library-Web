@@ -4,21 +4,21 @@ import Layout from '../layouts/Layout.astro';
 export const versions = [
   { version: '1.0.0', date: '2024-01-01', description: 'Initial release', details: 'Para hacer esta versión le ofrecimos un femboy como sacrificio a chatgpt' },
   { version: '1.1.0', date: '2024-03-15', description: 'Added new features', details:'Hicimos esta versión mientras jugabamos al teto' },
-  { version: '1.2.0', date: '2024-05-20', description: 'Improved performance', details:'Me follé un caterpie' },
+  { version: '1.2.0', date: '2024-05-20', description: 'Improved performance', details:'I fucked a caterpie' },
   // En un futuro importar como un json, o manejarlo como un .md, veremos dijo el ciego.
 ];
 
 
 ---
-<Layout title="INDEX">
+<Layout title="Versions">
     <main class="container mx-auto p-6">
-      <h1 class="text-3xl font-bold mb-6">Historial de Versiones</h1>
+      <h1 class="text-3xl font-bold mb-6">Versions history:</h1>
       <div class="relative border-l text-white border-[#c933c9]">
         {versions.map(version => (
           <div class="mb-10 ml-6 relative">
             <span class="flex items-center justify-center w-6 h-6 bg-[#c933c9] rounded-full -left-3 absolute"></span>
             <div class="p-4 bg-black bg-opacity-65 rounded-lg shadow-lg border border-[#641764]">
-              <a href={`/versions/${version.version}`} class="text-lg font-semibold hover:underline hover:text-[#c933c9]">{`Versión ${version.version}`}</a>
+              <a href={`/versions/${version.version}`} class="text-lg font-semibold hover:underline hover:text-[#c933c9]">{`${version.version}`}</a>
               <p class="text-sm">{version.date}</p>
               <p class="mt-2">{version.description}</p>
             </div>
