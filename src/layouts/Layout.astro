@@ -1,0 +1,85 @@
+---
+import Header from '../Header/Header.astro';
+import '../styles/grid-pattern.css';
+interface Props {
+  title: string;
+}
+
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <script is:inline>
+      // Función para manejar el tema
+      const applyTheme = () => {
+        const theme = localStorage.getItem('theme') || 'system';
+        const root = document.documentElement;
+        
+        root.classList.remove('light', 'dark');
+        
+        if (theme === 'system') {
+          const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          root.classList.add(systemTheme);
+        } else {
+          root.classList.add(theme);
+        }
+      };
+      
+      // Aplicar ambos al cargar
+      applyTheme();
+
+      // Escuchar cambios en el sistema para tema 'system'
+      if (localStorage.getItem('theme') === 'system') {
+        window.matchMedia('(prefers-color-scheme: dark)').addListener(applyTheme);
+      }
+    </script>
+    <script is:inline>
+      const lang = localStorage.getItem('language') || navigator.language.split('-')[0] || 'en';
+      document.documentElement.lang = lang;
+    </script>    
+    <style is:global>
+      html {
+        transition: color 0.3s ease-in-out, 
+                    background-color 0.3s ease-in-out,
+                    opacity 0.3s ease-in-out;
+      }
+      body {
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Manga Library Chrome Extension" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="https://i.imgur.com/j3nvgV6.png" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  
+  <body class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors">
+    <Header />
+    <div class="grid-pattern">
+      <slot />
+    </div>
+
+      <footer class="bg-black dark:bg-gray-900 text-white  shadow-lg mt-4 py-4 transition-colors">
+        <div class="container mx-auto px-4">
+          <div class="flex justify-between items-center">
+            <p class="font-medium">&copy; 2024 Manga Library</p>
+            <a 
+              href="https://chromewebstore.google.com/detail/manga-library/agdepjcnhljkjcnnmanbooinhoaieidc"
+              class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Get it on Chrome Web Store
+            </a>
+          </div>
+        </div>
+      </footer>
+  </body>
+</html>

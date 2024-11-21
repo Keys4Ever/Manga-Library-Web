@@ -1,0 +1,22 @@
+---
+import Feature from "./components/Feature.astro";
+import Number from "./components/Number.astro";
+---
+<ul class="space-y-6">
+    <li class="flex items-start space-x-4">
+        <Number number={1}/>
+        <Feature>Track your reading progress across devices</Feature>
+    </li>
+    <li class="flex items-start space-x-4">
+      <Number number={2}/>
+      <Feature>Organize with custom categories & tags</Feature>
+    </li>
+    <li class="flex items-start space-x-4">
+      <Number number={3}/>
+      <Feature>Cloud sync for seamless experience</Feature>
+    </li>
+    <li class="flex items-start space-x-4">
+      <Number number={4} />
+      <Feature>Advanced search & filtering system</Feature>
+    </li>
+</ul>

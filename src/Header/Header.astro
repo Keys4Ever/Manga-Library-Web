@@ -1,0 +1,20 @@
+---
+import AboutMenu from './components/AboutMenu.astro';
+import ThemeToggle from '../components/ThemeToggle';
+import NavHref from './components/NavHref.astro';
+import ClickableLogo from './components/ClickableLogo.astro';
+---
+
+<header class="bg-white dark:bg-gray-900 shadow-lg mb-4">
+  <div class="container mx-auto px-4 py-4">
+    <div class="flex items-center justify-between">
+      <ClickableLogo/>
+      <nav class="flex items-center space-x-6">
+        <NavHref Href={`/`} > Home </NavHref>
+        <NavHref Href="/versions">Versions</NavHref>
+        <AboutMenu />
+        <ThemeToggle client:load />
+      </nav>
+    </div>
+  </div>
+</header>

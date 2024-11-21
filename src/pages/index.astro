@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Features from '../Features/Features.astro';
+---
+
+<Layout title="Manga Library - Chrome Extension">
+  <main class="container mx-auto px-4 py-12">
+    <div class="text-center mb-16">
+      <h1 class="text-6xl font-black text-black dark:text-white mb-6 leading-tight">
+        MANGA LIBRARY
+        <span class="block text-2xl font-bold mt-4">Your Ultimate Manga Collection Manager</span>
+      </h1>
+      <div class="mt-8">
+        <a
+          href="https://chromewebstore.google.com/detail/manga-library/agdepjcnhljkjcnnmanbooinhoaieidc"
+          class="bg-[#FF3366] hover:bg-[#ff1f4f] text-white px-8 py-4 text-xl font-bold inline-block transition-colors"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+        ADD TO CHROME
+        </a>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 items-start">
+      <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg">
+        <img
+          src="https://lh3.googleusercontent.com/rH5_uGMXIj0zAnKTpM7JKdgTeY6ZtuSnPtk77W2Z_ZvbaGmrMBesuRSF9EDAVaAXMvZtFvC-eXXuu-m3nSln-K8C_g=s1280-w1280-h800"
+          alt="Manga Library Extension Screenshot"
+          class="rounded-lg"
+        />
+      </div>
+      
+      <div>
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg">
+          <h2 class="text-4xl font-black text-black dark:text-white mb-8">
+            FEATURES
+          </h2>
+          <Features />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
