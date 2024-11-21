@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       '@astrojs/react':
-        specifier: ^3.0.10
+        specifier: ^3.6.2
         version: 3.6.2(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.4.11)
       '@astrojs/tailwind':
         specifier: ^5.1.2
@@ -21,10 +21,10 @@ importers:
         specifier: ^0.460.0
         version: 0.460.0(react@18.3.1)
       react:
-        specifier: ^18.2.0
+        specifier: ^18.3.1
         version: 18.3.1
       react-dom:
-        specifier: ^18.2.0
+        specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
       tailwindcss:
         specifier: ^3.4.15
@@ -34,10 +34,10 @@ importers:
         version: 3.23.8
     devDependencies:
       '@types/react':
-        specifier: ^18.2.61
+        specifier: ^18.3.12
         version: 18.3.12
       '@types/react-dom':
-        specifier: ^18.2.19
+        specifier: ^18.3.1
         version: 18.3.1
       typescript:
         specifier: ^5.4.2
