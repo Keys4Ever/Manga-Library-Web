@@ -5,8 +5,8 @@ const versions = defineCollection({
   schema: z.object({
     version: z.string(),
     date: z.string(),
-    features: z.array(z.string()).optional(),
     bugfixes: z.array(z.string()).optional(),
+    features: z.array(z.string()).optional(),
     improvements: z.array(z.string()).optional(),
   }),
 });

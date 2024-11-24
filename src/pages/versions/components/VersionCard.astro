@@ -2,9 +2,19 @@
 import { ExternalLink } from 'lucide-react';
 import FeatureList from './FeatureList.astro';
 
-const { version } = Astro.props;
----
+// Valores por defecto para version
+const defaultVersion = {
+  data: {
+    version: '0.0.1', 
+    date: '2024-01-01', 
+    features: [], 
+    improvements: [],
+    bugfixes: [],
+  },
+};
 
+const { version = defaultVersion } = Astro.props;
+---
 <div class="dark:hover:border-white hover:border-blue-400 bg-white dark:bg-gray-800 border-4 border-black dark:border-gray-700 p-4 sm:p-6 hover:bg-yellow-50 transition-colors">
   <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 border-b-2 border-black dark:border-gray-600 pb-4 gap-3">
     <h2 class="text-xl sm:text-2xl font-black text-black dark:text-white flex items-center">
@@ -20,13 +30,13 @@ const { version } = Astro.props;
     </span>
   </div>
 
-  {version.data.features && (
+  {version.data.features && version.data.features.length > 0 && (
     <FeatureList title="New Features" items={version.data.features} color="blue" />
   )}
-  {version.data.improvements && (
+  {version.data.improvements && version.data.improvements.length > 0 && (
     <FeatureList title="Improvements" items={version.data.improvements} color="green" />
   )}
-  {version.data.bugfixes && (
+  {version.data.bugfixes && version.data.bugfixes.length > 0 && (
     <FeatureList title="Bug Fixes" items={version.data.bugfixes} color="red" />
   )}
 </div>
