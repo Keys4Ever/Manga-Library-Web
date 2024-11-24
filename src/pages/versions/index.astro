@@ -10,59 +10,59 @@ const sortedVersions = versions.sort((a, b) =>
 ---
 
 <Layout title="Versions - Manga Library">
-  <main class="container mx-auto px-4 py-12 max-w-5xl">
-    <h1 class="text-4xl font-black text-black dark:text-white mb-8 border-b-4 border-black dark:border-white pb-4">
+  <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 max-w-5xl">
+    <h1 class="text-3xl sm:text-4xl font-black text-black dark:text-white mb-6 sm:mb-8 border-b-4 border-black dark:border-white pb-3 sm:pb-4">
       Version History
     </h1>
-    <div class="space-y-8">
+    <div class="space-y-6 sm:space-y-8">
       {sortedVersions.map((version) => (
-        <div class="dark:hover:border-white hover:border-blue-400 bg-white dark:bg-gray-800 border-4 border-black dark:border-gray-700 p-6 hover:bg-yellow-50 transition-colors">
-          <div class="flex justify-between items-center mb-4 border-b-2 border-black dark:border-gray-600 pb-4">
-            <h2 class="text-2xl font-black text-black dark:text-white flex items-center">
+        <div class="dark:hover:border-white hover:border-blue-400 bg-white dark:bg-gray-800 border-4 border-black dark:border-gray-700 p-4 sm:p-6 hover:bg-yellow-50 transition-colors">
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 border-b-2 border-black dark:border-gray-600 pb-4 gap-3">
+            <h2 class="text-xl sm:text-2xl font-black text-black dark:text-white flex items-center">
               <a href={`/versions/${version.data.version}`} class="hover:bg-yellow-300 dark:hover:bg-yellow-700 px-2 flex items-center">
                 Version {version.data.version}
                 <span class="ml-2">
-                  <ExternalLink />
+                  <ExternalLink size={20} />
                 </span>
               </a>
             </h2>
-            <span class="font-mono bg-black text-white dark:bg-gray-600 dark:text-gray-200 px-3 py-1">
+            <span class="font-mono text-sm sm:text-base bg-black text-white dark:bg-gray-600 dark:text-gray-200 px-2 sm:px-3 py-1 inline-block">
               {version.data.date}
             </span>
           </div>
 
           {version.data.features && (
             <div class="mb-4">
-              <h3 class="font-bold mb-2 bg-blue-500 dark:bg-blue-700 text-white px-2 py-1 inline-block">
+              <h3 class="text-sm sm:text-base font-bold mb-2 bg-blue-500 dark:bg-blue-700 text-white px-2 py-1 inline-block">
                 New Features
               </h3>
               <ul class="list-none space-y-1 mt-2">
                 {version.data.features.map((feature) => (
-                  <li class="font-mono border-l-4 border-blue-500 dark:border-blue-700 pl-4">{feature}</li>
+                  <li class="font-mono text-sm sm:text-base border-l-4 border-blue-500 dark:border-blue-700 pl-3 sm:pl-4">{feature}</li>
                 ))}
               </ul>
             </div>
           )}
           {version.data.improvements && (
             <div class="mb-4">
-              <h3 class="font-bold mb-2 bg-green-500 dark:bg-green-700 text-white px-2 py-1 inline-block">
+              <h3 class="text-sm sm:text-base font-bold mb-2 bg-green-500 dark:bg-green-700 text-white px-2 py-1 inline-block">
                 Improvements
               </h3>
               <ul class="list-none space-y-1 mt-2">
                 {version.data.improvements.map((improvement) => (
-                  <li class="font-mono border-l-4 border-green-500 dark:border-green-700 pl-4">{improvement}</li>
+                  <li class="font-mono text-sm sm:text-base border-l-4 border-green-500 dark:border-green-700 pl-3 sm:pl-4">{improvement}</li>
                 ))}
               </ul>
             </div>
           )}
           {version.data.bugfixes && (
             <div>
-              <h3 class="font-bold mb-2 bg-red-500 dark:bg-red-700 text-white px-2 py-1 inline-block">
+              <h3 class="text-sm sm:text-base font-bold mb-2 bg-red-500 dark:bg-red-700 text-white px-2 py-1 inline-block">
                 Bug Fixes
               </h3>
               <ul class="list-none space-y-1 mt-2">
                 {version.data.bugfixes.map((bugfix) => (
-                  <li class="font-mono border-l-4 border-red-500 dark:border-red-700 pl-4">{bugfix}</li>
+                  <li class="font-mono text-sm sm:text-base border-l-4 border-red-500 dark:border-red-700 pl-3 sm:pl-4">{bugfix}</li>
                 ))}
               </ul>
             </div>

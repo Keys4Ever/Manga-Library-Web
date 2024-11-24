@@ -1,10 +1,15 @@
 ---
+interface Props {
+  isMobile?: boolean;
+}
+
+const { isMobile = false } = Astro.props;
 ---
-<div class="relative group">
-  <button class="font-bold hover:bg-[#FF3366] hover:text-white px-4 py-2 transition-colors">
+<div class={`relative group ${isMobile ? 'w-full' : ''}`}>
+  <button class={`font-bold hover:bg-[#FF3366] hover:text-white px-4 py-2 transition-colors w-full text-left ${isMobile ? 'border-b-2 border-black dark:border-gray-200' : ''}`}>
     About us
   </button>
-  <div class="absolute right-0 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg hidden group-focus:block group-hover:block z-50">
+  <div class={`${isMobile ? 'relative w-full' : 'absolute right-0 w-48'} bg-white dark:bg-gray-800 rounded-lg shadow-lg hidden group-hover:block group-focus:block z-50`}>
     <a 
       href="https://github.com/keys4ever" 
       target="_blank" 

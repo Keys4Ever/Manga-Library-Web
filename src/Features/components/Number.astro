@@ -2,9 +2,8 @@
 interface Props {
     number: number;
 }
-const {number} = Astro.props;
+const { number } = Astro.props;
 ---
-<div class="bg-[#FF3366] text-white px-4 py-2 w-12 h-12 flex items-center justify-center rounded-md font-bold">
-    <span>{number}</span>
-  </div>
-  
+<div class="bg-[#FF3366] text-white min-w-12 min-h-12 flex items-center justify-center rounded-md font-bold">
+  <span>{number}</span>
+</div>
