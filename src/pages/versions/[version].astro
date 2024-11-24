@@ -1,7 +1,11 @@
 ---
-import { getCollection } from 'astro:content';
+// Importar módulos y dependencias
+import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import FeatureList from './components/FeatureList.astro';
+import { CollectionEntry } from 'astro:content';
 
+// Obtener datos estáticos
 export async function getStaticPaths() {
   const versions = await getCollection('versions');
   return versions.map(entry => ({
@@ -10,8 +14,12 @@ export async function getStaticPaths() {
   }));
 }
 
+type Props = CollectionEntry<'versions'>
+
+// Obtener propiedades de entrada
 const { entry } = Astro.props;
 const { version, date, features, improvements, bugfixes } = entry.data;
+const { Content } = await entry.render();
 ---
 
 <Layout title={`Version ${version} - Manga Library`}>
@@ -25,7 +33,7 @@ const { version, date, features, improvements, bugfixes } = entry.data;
         </a>
       </div>
       
-      <!-- Version Card -->
+      <!-- Version Details -->
       <div class="bg-white dark:bg-gray-800 border-4 border-black dark:border-gray-700 p-4 sm:p-8">
         <!-- Header -->
         <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 sm:mb-8 border-b-4 border-black dark:border-gray-600 pb-4 gap-3">
@@ -36,44 +44,18 @@ const { version, date, features, improvements, bugfixes } = entry.data;
         </div>
 
         <!-- Features -->
-        {features && (
-          <div class="mb-8 sm:mb-12">
-            <h2 class="text-lg sm:text-xl font-black mb-3 sm:mb-4 bg-blue-500 dark:bg-blue-700 text-white px-3 sm:px-4 py-1 sm:py-2 inline-block">
-              New Features
-            </h2>
-            <ul class="list-none space-y-2 sm:space-y-3 mt-3 sm:mt-4 border-l-4 border-blue-500 dark:border-blue-700 pl-3 sm:pl-4">
-              {features.map((feature) => (
-                <li class="font-mono text-sm sm:text-base text-black dark:text-gray-200">{feature}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-
+        {features && <FeatureList title="New Features" items={features} color="blue" />}
         <!-- Improvements -->
-        {improvements && (
-          <div class="mb-8 sm:mb-12">
-            <h2 class="text-lg sm:text-xl font-black mb-3 sm:mb-4 bg-green-500 dark:bg-green-700 text-white px-3 sm:px-4 py-1 sm:py-2 inline-block">
-              Improvements
-            </h2>
-            <ul class="list-none space-y-2 sm:space-y-3 mt-3 sm:mt-4 border-l-4 border-green-500 dark:border-green-700 pl-3 sm:pl-4">
-              {improvements.map((improvement) => (
-                <li class="font-mono text-sm sm:text-base text-black dark:text-gray-200">{improvement}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-
+        {improvements && <FeatureList title="Improvements" items={improvements} color="green" />}
         <!-- Bug Fixes -->
-        {bugfixes && (
-          <div>
-            <h2 class="text-lg sm:text-xl font-black mb-3 sm:mb-4 bg-red-500 dark:bg-red-700 text-white px-3 sm:px-4 py-1 sm:py-2 inline-block">
-              Bug Fixes
-            </h2>
-            <ul class="list-none space-y-2 sm:space-y-3 mt-3 sm:mt-4 border-l-4 border-red-500 dark:border-red-700 pl-3 sm:pl-4">
-              {bugfixes.map((bugfix) => (
-                <li class="font-mono text-sm sm:text-base text-black dark:text-gray-200">{bugfix}</li>
-              ))}
-            </ul>
+        {bugfixes && <FeatureList title="Bug Fixes" items={bugfixes} color="red" />}
+
+        <!-- Additional Content -->
+        {entry.body && (
+          <div class="mt-8 sm:mt-12">
+            <article class="prose dark:prose-invert">
+              <Content />
+            </article>
           </div>
         )}
       </div>

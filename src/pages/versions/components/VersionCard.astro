@@ -1,0 +1,32 @@
+---
+import { ExternalLink } from 'lucide-react';
+import FeatureList from './FeatureList.astro';
+
+const { version } = Astro.props;
+---
+
+<div class="dark:hover:border-white hover:border-blue-400 bg-white dark:bg-gray-800 border-4 border-black dark:border-gray-700 p-4 sm:p-6 hover:bg-yellow-50 transition-colors">
+  <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 border-b-2 border-black dark:border-gray-600 pb-4 gap-3">
+    <h2 class="text-xl sm:text-2xl font-black text-black dark:text-white flex items-center">
+      <a href={`/versions/${version.data.version}`} class="hover:bg-yellow-300 dark:hover:bg-yellow-700 px-2 flex items-center">
+        Version {version.data.version}
+        <span class="ml-2">
+          <ExternalLink size={20} />
+        </span>
+      </a>
+    </h2>
+    <span class="font-mono text-sm sm:text-base bg-black text-white dark:bg-gray-600 dark:text-gray-200 px-2 sm:px-3 py-1 inline-block">
+      {version.data.date}
+    </span>
+  </div>
+
+  {version.data.features && (
+    <FeatureList title="New Features" items={version.data.features} color="blue" />
+  )}
+  {version.data.improvements && (
+    <FeatureList title="Improvements" items={version.data.improvements} color="green" />
+  )}
+  {version.data.bugfixes && (
+    <FeatureList title="Bug Fixes" items={version.data.bugfixes} color="red" />
+  )}
+</div>

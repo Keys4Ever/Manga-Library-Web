@@ -1,0 +1,16 @@
+---
+const { title, items, color } = Astro.props;
+---
+
+<div class="mb-4">
+  <h3 class={`text-sm sm:text-base font-bold mb-2 bg-${color}-500 dark:bg-${color}-700 text-white px-2 py-1 inline-block`}>
+    {title}
+  </h3>
+  <ul class="list-none space-y-1 mt-2">
+    {items.map((item) => (
+      <li class={`font-mono text-sm sm:text-base border-l-4 border-${color}-500 dark:border-${color}-700 pl-3 sm:pl-4`}>
+        {item}
+      </li>
+    ))}
+  </ul>
+</div>
