@@ -1,0 +1,54 @@
+---
+import { ExternalLink } from 'lucide-react';
+import FeatureList from './FeatureList.astro';
+
+interface Props {
+  version: string;
+  plannedDate?: string;
+  plannedFeatures?: string[];
+  improvements?: string[];
+  description?: string;
+}
+
+const { 
+  version, 
+  plannedDate = 'Coming Soon',
+  plannedFeatures = [],
+  improvements = [],
+  description = 'This version is currently in development.'
+} = Astro.props;
+---
+
+<div class="dark:hover:border-white hover:border-yellow-400 bg-white dark:bg-gray-800 border-4 border-yellow-500 dark:border-yellow-400 p-4 sm:p-6 hover:bg-yellow-50 transition-colors">
+  <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 border-b-2 border-yellow-500 dark:border-yellow-400 pb-4 gap-3">
+    <h2 class="text-xl sm:text-2xl font-black text-black dark:text-white flex items-center gap-3">
+      <a href={`/versions/${version}`} class="hover:bg-yellow-300 dark:hover:bg-yellow-700 px-2 flex items-center">
+        Version {version}
+        <span class="ml-2">
+          <ExternalLink size={20} />
+        </span>
+      </a>
+      <span class="text-xs sm:text-sm bg-yellow-500 text-black px-2 py-0.5 rounded-full font-bold">
+        Coming Soon
+      </span>
+    </h2>
+    <span class="font-mono text-sm sm:text-base bg-yellow-500 text-black px-2 sm:px-3 py-1 inline-block">
+      Planned: {plannedDate}
+    </span>
+  </div>
+
+  <p class="text-gray-700 dark:text-gray-300 font-medium mb-4">
+    {description}
+  </p>
+
+  {plannedFeatures && plannedFeatures.length > 0 && (
+    <div class="space-y-1">
+        {plannedFeatures && plannedFeatures.length > 0 && (
+            <FeatureList title="Planned Features" items={plannedFeatures} color="yellow" />
+        )}
+        {improvements && improvements.length > 0 &&(
+            <FeatureList title='Improvements' items={improvements} color='yellow' />
+        )}
+    </div>
+  )}
+</div>

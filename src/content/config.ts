@@ -8,6 +8,8 @@ const versions = defineCollection({
     bugfixes: z.array(z.string()).optional(),
     features: z.array(z.string()).optional(),
     improvements: z.array(z.string()).optional(),
+    plannedDate: z.string().optional(),
+    draft: z.boolean().optional()
   }),
 });
 

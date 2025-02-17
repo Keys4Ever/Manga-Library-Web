@@ -2,11 +2,16 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import VersionCard from './components/VersionCard.astro';
+import ComingSoonCard from './components/ComingSoonCard.astro';
 
 const versions = await getCollection('versions');
 const sortedVersions = versions.sort((a, b) => 
   b.data.version.localeCompare(a.data.version, undefined, { numeric: true, sensitivity: 'base' })
 );
+
+// Separar las versiones publicadas de las coming soon
+const publishedVersions = sortedVersions.filter(v => !v.data.draft);
+const comingSoonVersions = sortedVersions.filter(v => v.data.draft);
 ---
 
 <Layout title="Versions - Manga Library">
@@ -15,7 +20,16 @@ const sortedVersions = versions.sort((a, b) =>
       Version History
     </h1>
     <div class="space-y-6 sm:space-y-8">
-      {sortedVersions.map((version) => (
+      {comingSoonVersions.map((version) => (
+        <ComingSoonCard
+          version={version.data.version}
+          plannedFeatures={version.data.features}
+          plannedDate={version.data.plannedDate}
+          improvements={version.data.improvements}
+        />
+      ))}
+      
+      {publishedVersions.map((version) => (
         <VersionCard version={version} />
       ))}
     </div>
