@@ -18,7 +18,7 @@ type Props = CollectionEntry<'versions'>
 
 // Obtener propiedades de entrada
 const { entry } = Astro.props;
-const { version, date, features, improvements, bugfixes } = entry.data;
+const { version, date, features, improvements, bugfixes, draft } = entry.data;
 const { Content } = await entry.render();
 ---
 
@@ -44,7 +44,7 @@ const { Content } = await entry.render();
         </div>
 
         <!-- Features -->
-        {features && <FeatureList title="New Features" items={features} color="blue" />}
+        {features && <FeatureList title={draft ? 'Incoming features' : 'New Features'} items={features} color="blue" />}
         <!-- Improvements -->
         {improvements && <FeatureList title="Improvements" items={improvements} color="green" />}
         <!-- Bug Fixes -->
